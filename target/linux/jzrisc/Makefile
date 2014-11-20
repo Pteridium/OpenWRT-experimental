@@ -9,6 +9,7 @@ include $(TOPDIR)/rules.mk
 ARCH:=mipsel
 BOARD:=jzrisc
 BOARDNAME:=JZ47XX
+CPU_TYPE:=mips32r2
 FEATURES:=targz nand ubifs audio usb gpio
 SUBTARGETS:=ci20
 
