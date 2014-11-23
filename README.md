@@ -26,11 +26,11 @@ To be added:
 - Framebuffer and HDMI.
 
 How to boot the MIPS Creator CI20 with OpenWRT (for now):
-1.- Make a bootable memory card with an ext4 partition.
-2.- Inside the memory card first partition create a directory called "boot" and copy vmlinux.img on it.
-3.- Copy OpenWRT rootfs into an USB massive storage device. By default the kernel is configured to boot sda1.
-4.- Power on the board and test.
+1. Make a bootable memory card with an ext4 partition.
+2. Inside the memory card first partition create a directory called "boot" and copy vmlinux.img on it.
+3. Copy OpenWRT rootfs into an USB massive storage device. By default the kernel is configured to boot sda1.
+4. Power on the board and test.
 
 Notes:
 - Despite the ethernet controller is attached to an "slow" internal memory bus, the performance is good (~ 75 Mbps) with kernel 3.16 and above.
-- More information in elinux: http://elinux.org/MIPS_Creator_CI20
+- More information at elinux: http://elinux.org/MIPS_Creator_CI20
