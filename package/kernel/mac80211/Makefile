@@ -1479,13 +1479,23 @@ define KernelPackage/brcmfmac
   $(call KernelPackage/mac80211/Default)
   TITLE:=Broadcom IEEE802.11n USB FullMAC WLAN driver
   URL:=http://linuxwireless.org/en/users/Drivers/brcm80211
-  DEPENDS+= @USB_SUPPORT +kmod-usb-core +kmod-cfg80211 +@DRIVER_11N_SUPPORT +kmod-brcmutil
+  DEPENDS+= +kmod-cfg80211 +@DRIVER_11N_SUPPORT +kmod-brcmutil
   FILES:=$(PKG_BUILD_DIR)/drivers/net/wireless/brcm80211/brcmfmac/brcmfmac.ko
   AUTOLOAD:=$(call AutoProbe,brcmfmac)
 endef
 
 define KernelPackage/brcmfmac/description
  Kernel module for Broadcom IEEE802.11n USB Wireless cards
+endef
+
+define KernelPackage/brcmfmac/config
+  if PACKAGE_kmod-brcmfmac
+
+	config BRCMFMAC_SDIO
+		bool "Enable SDIO support"
+		default n
+		
+  endif
 endef
 
 config_package=$(if $(CONFIG_PACKAGE_kmod-$(1)),m)
@@ -1559,6 +1569,7 @@ config-$(call config_package,brcmutil) += BRCMUTIL
 config-$(call config_package,brcmsmac) += BRCMSMAC
 config-$(call config_package,brcmfmac) += BRCMFMAC
 config-y += BRCMFMAC_USB
+config-$(CONFIG_BRCMFMAC_SDIO) += BRCMFMAC_SDIO
 config-$(CONFIG_PACKAGE_BRCM80211_DEBUG) += BRCMDBG
 
 config-$(call config_package,mac80211-hwsim) += MAC80211_HWSIM
